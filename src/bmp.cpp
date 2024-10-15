@@ -12,7 +12,7 @@ namespace BMP {
 
 struct BMPImage::Impl {
 
-    #pragma pack(2)
+    #pragma pack(push,2)
     struct BITMAPFILEHEADER {
         std::uint16_t bfType;
         std::uint32_t bfSize;
@@ -20,8 +20,9 @@ struct BMPImage::Impl {
         std::uint16_t bfReserved2;
         std::uint32_t bfOfBits;
     };
+    #pragma pack(pop)
 
-    #pragma pack(2)
+    #pragma pack(push,2)
     struct BITMAPINFOHEADER {
         std::uint32_t biSize;
         std::int32_t biWidth;
@@ -35,6 +36,7 @@ struct BMPImage::Impl {
         std::uint32_t biClrUsed;
         std::uint32_t biClrImportant;
     };
+    #pragma pack(pop)
 
     struct Pixel {
         Pixel(std::uint8_t r, std::uint8_t g, std::uint8_t b) : r(r), g(g), b(b) {}
